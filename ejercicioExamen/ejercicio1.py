@@ -10,31 +10,63 @@ ventas = {
 }
 
 def validar_sigla(sigla):
-    return 2 <= len(sigla) <= 5 and sigla.isalpha() and sigla.isupper()
+   if len(sigla) >= 2 and len(sigla) <=5:
+       if sigla.isalpha():
+           if sigla.isupper():
+               return True
+   return False
 
 def validar_nombre(nombre):
-    return 3 <= len (nombre.strip()) <=40
+   nombre = nombre.strip()
+   if len(nombre) >= 3 and len(nombre) <= 40:
+       return True
+   else:
+       return False
 
 def validar_fabricante(fabricante):
-    return
+    fabricante = fabricante.strip()
+    if len(fabricante) >= 2 and len(fabricante) <= 30 :
+        return True
+    else:
+        return False
 
-
-
-def agregar_consola(consolas,ventas):
-    sigla = input("Ingrese sigla : ")
-
-    if not validar_sigla(sigla):
-        print("Sigla invalida")
-        return
-    if sigla in consolas:
-        print("La sigla ya existe")
-        return
+def validar_año(anio):
+    if anio >= 1972 and 2025:
+        return True
+    else:
+        return False
     
+def valida_precio(precio):
+    if precio > 0:
+        return True
+    else:
+        return False
+    
+def validar_stock(stock):
+    if stock >= 0:
+        return True
+    else:
+        return False
 
 
-print("---MENU PRINCIPAL")
-print("1.Agregar consola")
-print("2.Buscar consola por sigla")
-print("3.Eliminar consola")
-print("4.Mostrar todas las consolas ")
-print("5.Salir")
+def mostrar_menu():
+  print("\n==================")
+  print("SISTEMA DE GESTION DE CONSOLAS")
+  print("====================")
+  print("1.Agregar consola")
+  print("2.Buscar consola por sigla")
+  print("3.Eliminar consola")
+  print("4.Mostrar todas las consolas ")
+  print("5.Salir")
+  
+def leer_opcion():
+    while True:
+        try:
+            opcion = int(input("Seleccione una opcion: "))
+            
+            if opcion >= 1 and opcion <= 5:
+                return opcion
+            else:
+                print("Debe ingresar una opcion entre 1 y 5.")
+        except ValueError:
+            print("Debe ingresar un numero")
